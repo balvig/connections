@@ -4,5 +4,7 @@ module Connections
     belongs_to :connectable, :polymorphic => true
 
     validates_uniqueness_of :connectable_type, :scope => [:connectable_id, :connector_type, :connector_id, :type]
+
+    attr_accessible
   end
 end

@@ -7,16 +7,23 @@ module Connections
         has_many :connections, :as => :connector, :dependent => :destroy, :class_name => 'Connections::Connection'
         types.each do |t|
           class_eval do
-            has_many :"#{t.to_s.pluralize}", :as => :connector
+
+            # user.follows
+            has_many :"#{t.to_s.pluralize}", :as => :connector if Object.const_defined?(t.to_s.classify)
 
             # user.follow(other_user)
             define_method t do |connectable|
-              t.to_s.classify.constantize.create(:connector => self, :connectable => connectable)
+              Connections::Connection.create do |c|
+                c.type = t.to_s.classify
+                c.connector = self
+                c.connectable = connectable
+              end
             end
 
             # user.unfollow(other_user)
             define_method :"un#{t}" do |connectable|
-              active_connections(t, connectable).destroy_all
+              scope = active_connections(t, connectable)
+              Object.const_defined?(t.to_s.classify) ? scope.destroy_all : scope.delete_all
             end
 
             # user.follows?(other_user)

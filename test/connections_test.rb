@@ -9,37 +9,34 @@ class ConnectionsTest < ActiveSupport::TestCase
   end
 
   test '#follow' do
-    @follower.follows?(@user).should be_false
+    assert !@follower.follows?(@user)
     @follower.follow(@user)
-    @follower.follows?(@user).should be_true
+    assert @follower.follows?(@user)
   end
 
   test '#unfollow' do
     @follower.follow(@user)
-    @follower.follows?(@user).should be_true
+    assert @follower.follows?(@user)
     @follower.unfollow(@user)
-    @follower.follows?(@user).should be_false
+    assert !@follower.follows?(@user)
   end
 
   test '#toggle_follow' do
     @follower.toggle_follow(@user)
-    @follower.follows?(@user).should be_true
+    assert @follower.follows?(@user)
     @follower.toggle_follow(@user)
-    @follower.follows?(@user).should be_false
+    assert !@follower.follows?(@user)
   end
 
   test '#following' do
     @follower.follow(@user)
     @follower.follow(@post)
-    @follower.following(:user).should == [@user]
-    @follower.following(:post).should == [@post]
+    assert_equal [@user], @follower.following(:user)
+    assert_equal [@post], @follower.following(:post)
   end
 
-  #test '#follows' do
-    #@follower.follow(@user)
-    #@follower.follow(book)
-    #@follower.like(Factory(:post))
-    #@follower.follows.map(&:connectable).should == [@user, book]
-  #end
+  test '#follows' do
+    assert !@user.respond_to?(:follows)
+  end
 
 end

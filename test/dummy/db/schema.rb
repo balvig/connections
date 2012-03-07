@@ -10,7 +10,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120307051308) do
+ActiveRecord::Schema.define(:version => 20120307052433) do
+
+  create_table "connections", :force => true do |t|
+    t.string   "type"
+    t.string   "connectable_type"
+    t.integer  "connectable_id"
+    t.string   "connector_type"
+    t.integer  "connector_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
 
   create_table "posts", :force => true do |t|
     t.datetime "created_at", :null => false
