@@ -8,12 +8,13 @@ module Connections
         types.each do |t|
           class_eval do
 
-            # user.follows
-            has_many :"#{t.to_s.pluralize}", :as => :connector if Object.const_defined?(t.to_s.classify)
+            # user.follows, requires a Follow model
+            has_many :"#{t.to_s.pluralize}", :as => :connector
 
             # user.follow(other_user)
             define_method t do |connectable|
-              Connections::Connection.create do |c|
+              klass = Object.const_defined?(t.to_s.classify) ? t.to_s.classify.constantize : Connections::Connection
+              klass.create do |c|
                 c.type = t.to_s.classify
                 c.connector = self
                 c.connectable = connectable
