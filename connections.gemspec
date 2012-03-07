@@ -7,11 +7,11 @@ require "connections/version"
 Gem::Specification.new do |s|
   s.name        = "connections"
   s.version     = Connections::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of Connections."
-  s.description = "TODO: Description of Connections."
+  s.authors     = ["Jens Balvig"]
+  s.email       = ["jens@balvig.com"]
+  s.homepage    = "https://github.com/balvig/connections"
+  s.summary     = "Connections allows you to easily add follow/like/subscribe/watch/stalk capabilities to any model"
+  s.description = "Connections allows you to easily add follow/like/subscribe/watch/stalk capabilities to any model"
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
