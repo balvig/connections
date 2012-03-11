@@ -1,9 +1,9 @@
 # Connections
 
-Most social apps needs some kind of follow/like/watch/stalk/etc
-feature that connects one model to another.
+Most social apps need some kind of follow/like/watch/stalk/etc
+features that connects one model to another.
 
-Instead of having to recreate this functionality for every project we
+Instead of having to recreate this functionality for every project I
 decided to create a gem that easily allows you to add these features
 using any naming you prefer.
 
@@ -39,7 +39,7 @@ This will add following methods:
     user.unfollow(other_user) # Removes 'Follow' connection between user -> other_user
     user.toggle_follow(other_user) # Toggles the connection on/off (useful for toggle buttons)
     user.follows?(other_user) # Returns true if the user if following other_user
-    user.followings(:user) # Returns a list of all the users the user is following
+    user.following(:user) # Returns a list of all the users the user is following
     other_user.followers(:user) #Returns a list of all the user's followers
 
     # Like
@@ -47,7 +47,7 @@ This will add following methods:
     user.unlike(post)
     user.toggle_like(post)
     user.likes?(post)
-    user.likings(:post)
+    user.liking(:post)
     post.likers(:user)
 
 That's it! If you want to add extra functionality to the join model (such
@@ -60,7 +60,7 @@ project like this:
 
 ## Credits
 
-This gem was inspired by [socialization](https://github.com/cmer/socialization) that although it didn't quite do what we needed is a pretty useful tool.
+This gem was inspired by [socialization](https://github.com/cmer/socialization) that although it didn't quite do what I needed is a pretty useful tool in itself.
 
 
 ## Copyright
