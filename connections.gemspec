@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.summary     = "A simple set of helpers allowing you to easily add follow/like/watch/stalk capabilities to any ActiveRecord model"
   s.description = "A simple set of helpers allowing you to easily add follow/like/watch/stalk capabilities to any ActiveRecord model"
 
-  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
+  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.md"]
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency "rails", "~> 3.2.1"
