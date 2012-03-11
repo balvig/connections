@@ -20,7 +20,8 @@ keeping track of what is connected to what.
 
 ## Usage
 
-Use `connects_with` and `connectable_with` to add connection capabilities to any model using
+Use `connects_with` to enable a model to connect to other models and
+`connectable_with ` to allow a model to be connected to using
 whatever naming scheme you prefer (follow, like, watch, etc)
 
     class User < ActiveRecord::Base
@@ -32,7 +33,9 @@ whatever naming scheme you prefer (follow, like, watch, etc)
       connectable_with :like
     end
 
-This will add following methods:
+Depending on the naming scheme you choose Connections will try to figure out the
+grammar and add appropriately named methods. For example in the case of
+"Follow" and "Like" the following methods will be added:
 
     # Follow
     user.follow(other_user) # Creates a 'Follow' connection from user -> other_user
