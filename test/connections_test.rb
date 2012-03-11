@@ -82,5 +82,4 @@ class ConnectionsTest < ActiveSupport::TestCase
     end
 
   end
-
 end

@@ -10,14 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120307052433) do
+ActiveRecord::Schema.define(:version => 20120311000457) do
 
-  create_table "connections", :force => true do |t|
-    t.string   "type"
-    t.string   "connectable_type"
+  create_table "connections_connections", :force => true do |t|
+    t.integer  "connector_id"
     t.integer  "connectable_id"
     t.string   "connector_type"
-    t.integer  "connector_id"
+    t.string   "connectable_type"
+    t.string   "type"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
   end

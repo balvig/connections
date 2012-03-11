@@ -12,10 +12,10 @@ using any naming you prefer.
 Add the gem to the gemfile:
 `gem "connections"`
 
-Run the generator:
-`rails generate connections -s`
+Install migration:
+`rake connections:install:migrations`
 
-This generates a migration that creates a single `connections` join table for
+This generates a migration that creates a single join table for
 keeping track of what is connected to what.
 
 ## Usage
