@@ -11,7 +11,7 @@ module Connections
             # user.followers(:user)
             define_method :"#{t.to_s.sub(/e$/,'')}ers" do |class_name|
               klass = class_name.to_s.classify.constantize
-              klass.joins(:connections).where("connections_connections.type = ? AND connectable_type = ? AND connectable_id = ?", t.to_s.classify, self.class.table_name.classify, self)
+              klass.joins(:connections).where("connections_connections.type = ? AND connectable_type = ? AND connectable_id = ?", t.to_s.classify, self.class.base_class.to_s, self)
             end
           end
         end
