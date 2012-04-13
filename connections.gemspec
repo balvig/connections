@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = Connections::VERSION
   s.authors     = ["Jens Balvig"]
   s.email       = ["jens@balvig.com"]
-  s.homepage    = "https://github.com/balvig/connections"
+  s.homepage    = "http://balvig.github.com/connections"
   s.summary     = "A simple set of helpers allowing you to easily add follow/like/watch/stalk capabilities to any ActiveRecord model"
   s.description = "A simple set of helpers allowing you to easily add follow/like/watch/stalk capabilities to any ActiveRecord model"
 
