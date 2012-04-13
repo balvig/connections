@@ -1,5 +1,5 @@
 language: ruby
-script: "bundle exec rake"
+script: "rake app:db:setup && rake app:db:test:prepare && rake test"
 rvm:
   - 1.8.7
   - 1.9.2
