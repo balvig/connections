@@ -7,6 +7,8 @@ Instead of having to recreate this functionality for every project I
 decided to create a gem that easily allows you to add these features
 using any naming you prefer.
 
+[![Build Status](https://secure.travis-ci.org/balvig/connections.png?branch=master)](http://travis-ci.org/balvig/connections)
+
 ## Installation
 
 Add the gem to the gemfile:
