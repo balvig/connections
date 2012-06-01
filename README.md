@@ -1,4 +1,4 @@
-# Connections
+# Connections [![Build Status](https://secure.travis-ci.org/balvig/connections.png?branch=master)](http://travis-ci.org/balvig/connections)
 
 Most social apps need some kind of follow/like/watch/stalk/etc
 features that connects one model to another.
@@ -6,8 +6,6 @@ features that connects one model to another.
 Instead of having to recreate this functionality for every project I
 decided to create a gem that easily allows you to add these features
 using any naming you prefer.
-
-[![Build Status](https://secure.travis-ci.org/balvig/connections.png?branch=master)](http://travis-ci.org/balvig/connections)
 
 ## Installation
 
