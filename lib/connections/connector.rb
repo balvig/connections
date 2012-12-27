@@ -13,8 +13,7 @@ module Connections
 
             # user.follow(other_user)
             define_method t do |connectable|
-              klass = Object.const_defined?(t.to_s.classify) ? t.to_s.classify.constantize : Connections::Connection
-              klass.create do |c|
+              Connections::Connection.create do |c|
                 c.type = t.to_s.classify
                 c.connector = self
                 c.connectable = connectable
@@ -42,10 +41,15 @@ module Connections
             end
 
             # user.following(:user)
-            define_method :"#{t.to_s.sub(/e$/,'')}ing" do |class_name|
-              klass = class_name.to_s.classify.constantize
-              klass.joins(:incoming_connections).where("connections_connections.type = ? AND connector_type = ? AND connector_id = ?", t.to_s.classify, self.class.base_class.to_s, self)
+            define_method :"#{t.to_s.sub(/e$/,'')}ing" do |class_name = nil|
+              if class_name
+                klass = class_name.to_s.classify.constantize
+                klass.joins(:incoming_connections).where("connections_connections.type = ? AND connector_type = ? AND connector_id = ?", t.to_s.classify, self.class.base_class.to_s, self)
+              else
+                connections.where('connections_connections.type = ?', t.to_s.classify)
+              end
             end
+
           end
         end
       end

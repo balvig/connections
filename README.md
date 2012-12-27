@@ -46,7 +46,9 @@ user.unfollow(other_user) # Removes 'Follow' connection between user -> other_us
 user.toggle_follow(other_user) # Toggles the connection on/off (useful for toggle buttons)
 user.follows?(other_user) # Returns true if the user if following other_user
 user.following(:user) # Returns a list of all the users the user is following
+user.following.size # Returns a total count of followers of the user
 other_user.followers(:user) #Returns a list of all the user's followers who are class 'User'
+other_user.followers.size #Returns a total count of all the user's followers
 
 # Like
 user.like(post)
@@ -54,7 +56,9 @@ user.unlike(post)
 user.toggle_like(post)
 user.likes?(post)
 user.liking(:post)
+post.liking.size
 post.likers(:user)
+post.likers.size
 ```
 
 That's it! If you want to add extra functionality to the join model (such

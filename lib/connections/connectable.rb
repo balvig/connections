@@ -9,9 +9,13 @@ module Connections
           class_eval do
 
             # user.followers(:user)
-            define_method :"#{t.to_s.sub(/e$/,'')}ers" do |class_name|
-              klass = class_name.to_s.classify.constantize
-              klass.joins(:connections).where("connections_connections.type = ? AND connectable_type = ? AND connectable_id = ?", t.to_s.classify, self.class.base_class.to_s, self)
+            define_method :"#{t.to_s.sub(/e$/,'')}ers" do |class_name = nil|
+              if class_name
+                klass = class_name.to_s.classify.constantize
+                klass.joins(:connections).where("connections_connections.type = ? AND connectable_type = ? AND connectable_id = ?", t.to_s.classify, self.class.base_class.to_s, self)
+              else
+                incoming_connections.where('connections_connections.type = ?', t.to_s.classify)
+              end
             end
           end
         end

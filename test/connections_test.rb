@@ -29,23 +29,30 @@ class ConnectionsTest < ActiveSupport::TestCase
     assert !@follower.follows?(@user)
   end
 
-  test '#following' do
+  test '#following with arg' do
     @follower.follow(@user)
     @follower.follow(@post)
     assert_equal [@user], @follower.following(:user)
     assert_equal [@post], @follower.following(:post)
   end
 
-  test '#follows' do
-    #TODO: What should happen if the Follow model isn't defined?
-    #assert !@user.respond_to?(:follows)
+  test '#following without arg' do
+    @follower.follow(@user)
+    @follower.follow(@post)
+    assert_equal 2, @follower.following.size
   end
 
-  test '#followers' do
+  test '#followers with arg' do
     @follower.follow(@user)
     @follower.follow(@post)
     assert_equal [@follower], @user.followers(:user)
     assert_equal [@follower], @post.followers(:user)
+  end
+
+  test '#followers without arg' do
+    @follower.follow(@post)
+    @user.follow(@post)
+    assert_equal 2, @post.followers.size
   end
 
   # Explicit Like class defined
@@ -78,4 +85,5 @@ class ConnectionsTest < ActiveSupport::TestCase
     @user.like(@post)
     assert_equal [@post], @user.likes.map(&:connectable)
   end
+
 end
