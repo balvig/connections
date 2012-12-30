@@ -55,6 +55,15 @@ class ConnectionsTest < ActiveSupport::TestCase
     assert_equal 2, @post.followers.size
   end
 
+  test '#destroy cleans up connections' do
+    @follower.follow(@user)
+    @user.destroy
+    assert_equal 0, Connections::Connection.count
+    @follower.follow(@post)
+    @follower.destroy
+    assert_equal 0, Connections::Connection.count
+  end
+
   # Explicit Like class defined
   test '#like' do
     assert !@user.likes?(@post)

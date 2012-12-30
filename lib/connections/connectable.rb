@@ -4,7 +4,7 @@ module Connections
 
     module ClassMethods
       def connectable_with(*types)
-        has_many :incoming_connections, :as => :connectable, :dependent => :destroy, :class_name => 'Connections::Connection'
+        has_many :incoming_connections, :as => :connectable, :dependent => :delete_all, :class_name => 'Connections::Connection'
         types.each do |t|
           class_eval do
 
