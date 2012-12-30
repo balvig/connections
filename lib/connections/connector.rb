@@ -41,7 +41,8 @@ module Connections
             end
 
             # user.following(:user)
-            define_method :"#{t.to_s.sub(/e$/,'')}ing" do |class_name = nil|
+            define_method :"#{t.to_s.sub(/e$/,'')}ing" do |*args|
+              class_name = args.first
               if class_name
                 klass = class_name.to_s.classify.constantize
                 klass.joins(:incoming_connections).where("connections_connections.type = ? AND connector_type = ? AND connector_id = ?", t.to_s.classify, self.class.base_class.to_s, self)
