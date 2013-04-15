@@ -72,7 +72,8 @@ class ConnectionsTest < ActiveSupport::TestCase
   end
 
   test '#unlike' do
-    @user.like(@post)
+    like = @user.like(@post)
+    assert_equal Like, like.class
     assert @user.likes?(@post)
     @user.unlike(@post)
     assert !@user.likes?(@post)
