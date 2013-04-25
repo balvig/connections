@@ -80,10 +80,13 @@ class ConnectionsTest < ActiveSupport::TestCase
   end
 
   test '#toggle_like' do
+    @other_post = Post.create!
     @user.toggle_like(@post)
+    @user.toggle_like(@other_post)
     assert @user.likes?(@post)
     @user.toggle_like(@post)
     assert !@user.likes?(@post)
+    assert @user.likes?(@other_post)
   end
 
   test '#liking' do

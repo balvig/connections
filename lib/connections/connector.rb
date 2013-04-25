@@ -23,7 +23,7 @@ module Connections
             # user.unfollow(other_user)
             define_method :"un#{t}" do |connectable|
               if Object.const_defined?(t.to_s.classify)
-                connection_class(t).where(:connector_type => self.class.base_class, :connector_id => self).destroy_all
+                connection_class(t).where(:connector_type => self.class.base_class, :connector_id => self, :connectable_id => connectable).destroy_all
               else
                 active_connections(t, connectable).delete_all
               end
