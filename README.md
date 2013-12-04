@@ -56,7 +56,7 @@ user.unlike(post)
 user.toggle_like(post)
 user.likes?(post)
 user.liking(:post)
-post.liking.size
+user.liking.size
 post.likers(:user)
 post.likers.size
 ```
